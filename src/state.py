@@ -6,7 +6,8 @@ class JobRequirement(BaseModel):
     title: str = Field(..., description="The title of the job.")
     location: str = Field(..., description="The location of the job.")
     link: str = Field(..., description="The direct URL to the job listing.")
-    job_desc: str = Field(..., description="A brief summary or description of the job.")
+    job_desc: str = Field(default="", description="A brief summary or description of the job.")
+    job_requirements: str = Field(default="", description="Job requirements and qualifications.")
 
 class GraphState(TypedDict):
     url: Optional[str]

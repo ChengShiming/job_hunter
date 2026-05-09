@@ -38,7 +38,7 @@ def check_recipe_node(state: GraphState) -> GraphState:
     if recipe_exists(company_name):
         recipe = read_recipe(company_name)
         state["recipe_config"] = recipe
-        state["url"] = recipe.get("url")
+        state["url"] = recipe.get("job_list_url")
         print(f"Found existing recipe for {company_name}")
     else:
         state["recipe_config"] = None

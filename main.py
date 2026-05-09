@@ -1,6 +1,5 @@
 import asyncio
 import sys
-import os
 from src.graph import create_graph
 from crawl4ai import AsyncWebCrawler, BrowserConfig
 from dotenv import load_dotenv
@@ -8,21 +7,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def get_browser_config() -> BrowserConfig:
-    """Configures the browser to use Browserless.io if an API key is present."""
-    browserless_api_key = os.getenv("BROWSERLESS_API_KEY")
-    
-    if browserless_api_key:
-        ws_url = f"wss://chrome.browserless.io?token={browserless_api_key}"
-        return BrowserConfig(
-            browser_type="chromium",
-            headless=True,
-            use_managed_browser=True,
-            extra_args=["--no-sandbox"],
-            cdp_url=ws_url,
-            enable_stealth=True
-        )
-    else:
-        return BrowserConfig(headless=True, enable_stealth=True)
+    """Configures the browser for Crawl4AI using local Chromium."""
+    return BrowserConfig(
+        browser_type="chromium",
+        headless=True,
+        enable_stealth=True,
+        extra_args=["--accept-lang=zh-CN,zh;q=0.9", "--lang=zh-CN"],
+    )
 
 async def process_company(app, crawler, company_name: str):
     """Processes a single company."""

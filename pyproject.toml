@@ -8,6 +8,7 @@ dependencies = [
     "aiohttp>=3.13.3",
     "browser-use>=0.12.6",
     "crawl4ai>=0.8.6",
+    "ddgs>=9.14.2",
     "duckduckgo-search>=8.1.1",
     "langchain-community>=0.4.1",
     "langchain-openai>=1.1.9",
